@@ -3,67 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIDROV 97 EOOD | Premium Retail, Sporting Goods & Lifestyle</title>
-    <meta name="description" content="Leading retailer of sporting goods, musical instruments, and hobby items based in Pazardzhik, Bulgaria. Bridging physical retail with digital e-commerce solutions.">
+    <title>DIDROV 97 EOOD | Premium Retail & Sporting Goods</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* DESIGN SYSTEM: MODERN LIFESTYLE & E-COMMERCE */
+        /* CSS Variables for Consistent Theming */
         :root {
-            --primary: #0F172A;         /* Slate 900 - Deep Dark */
-            --primary-light: #1E293B;   /* Slate 800 */
-            --accent: #E11D48;          /* Rose 600 - Energetic Retail Red */
-            --accent-hover: #BE123C;    /* Rose 700 */
-            --bg-base: #F8FAFC;         /* Light Slate Gray */
-            --bg-white: #FFFFFF;
-            --text-main: #334155;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            --font-display: 'Montserrat', sans-serif;
+            --primary-color: #005A8C;
+            --secondary-color: #007bb5;
+            --accent-color: #E67E22;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F4F7F6;
+            --white: #FFFFFF;
+            --border-radius: 8px;
+            --transition: all 0.3s ease-in-out;
+            --container-width: 1200px;
         }
 
+        /* Basic Resets & Typography */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-sans);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-base);
-            -webkit-font-smoothing: antialiased;
+            color: var(--text-dark);
+            background-color: var(--white);
             overflow-x: hidden;
         }
 
-        /* 1. NAVIGATION */
-        nav {
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
-            top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            border-bottom: 3px solid var(--accent);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            height: 80px;
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo span {
-            color: var(--accent);
-            font-weight: 700;
+            color: var(--accent-color);
         }
 
         .nav-links {
@@ -72,645 +122,591 @@
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
             font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--accent-color);
         }
 
-        /* 2. HERO SECTION */
-        header {
-            min-height: 100vh;
+        /* 1. Main Screen (Hero Section) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 90, 140, 0.85), rgba(0, 90, 140, 0.85)), url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn:hover {
+            background-color: #d67118;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* 2. About Us */
+        .about-section {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0 10%;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.95) 100%);
-            background-color: var(--primary);
-            position: relative;
-            color: var(--bg-white);
-            overflow: hidden;
-        }
-
-        /* Abstract Dynamic Retail Grid Background */
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-            transform: perspective(800px) rotateX(45deg);
-            transform-origin: bottom;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(225, 29, 72, 0.15);
-            color: var(--accent);
-            padding: 8px 24px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            border: 1px solid var(--accent);
-            font-family: var(--font-display);
-        }
-
-        header h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
-        }
-
-        header p {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: #CBD5E1;
-            max-width: 700px;
-            margin-bottom: 40px;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg-white);
-            padding: 18px 40px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            border: 2px solid var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);
-        }
-
-        /* 3. ABOUT SECTION */
-        .section {
-            padding: 100px 10%;
-        }
-
-        .bg-white {
-            background-color: var(--bg-white);
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-header .line {
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
             align-items: center;
-        }
-
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
             text-align: justify;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-dark);
         }
 
-        .highlight-box {
-            background: var(--bg-base);
-            padding: 40px;
-            border-radius: 8px;
-            border-left: 6px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
+        .about-content p {
+            margin-bottom: 20px;
         }
 
-        /* 4. RETAIL CATEGORIES */
+        /* 3. Services */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
         }
 
         .service-card {
-            background: var(--bg-white);
-            padding: 50px 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
             text-align: center;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--primary);
-            transition: background 0.3s;
+            border-bottom: 4px solid transparent;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .service-card:hover::before {
-            background: var(--accent);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            background: rgba(225, 29, 72, 0.1);
-            padding: 15px;
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0, 90, 140, 0.1);
             border-radius: 50%;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-family: var(--font-display);
-            font-weight: 800;
-        }
-
-        /* 5. E-COMMERCE APP PROMO (CRITICAL FOR GOOGLE PLAY CONSOLE) */
-        .app-promo {
-            background: var(--primary);
-            color: var(--bg-white);
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .app-content h2 {
-            font-family: var(--font-display);
-            font-size: 2.8rem;
-            color: var(--bg-white);
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
-
-        .app-content p {
-            font-size: 1.1rem;
-            color: #CBD5E1;
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-
-        .feature-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: #E2E8F0;
-        }
-
-        .feature-list li::before {
-            content: "►";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: var(--accent);
-            padding: 16px 35px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid var(--accent);
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--bg-white);
-        }
-
-        .app-visual {
-            height: 100%;
-            min-height: 380px;
-            background: linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 2px dashed rgba(225, 29, 72, 0.4);
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 40px;
-            position: relative;
+            margin: 0 auto 25px auto;
+            color: var(--primary-color);
         }
 
-        /* 6. CONTACT & CORPORATE INFO (MATCHES D&B EXACTLY) */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
+        .service-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* 4. Advantages */
+        .advantages-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .advantages-section .section-title,
+        .advantages-section .section-subtitle,
+        .advantages-section h3 {
+            color: var(--white);
+        }
+
+        .advantages-section .icon-wrapper {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .advantages-section .service-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+        }
+
+        .advantages-section .service-card p {
+            color: #d1e2ec;
+        }
+
+        .advantages-section .service-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* 5. Process */
+        .process-section {
+            background-color: var(--bg-light);
+        }
+
+        .process-wrapper {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .corp-details {
-            background: var(--bg-white);
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
+        .process-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
         }
 
-        .corp-details h3 {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 800;
+        .process-step {
+            width: 30%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .detail-row {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .detail-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .detail-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .detail-value {
-            font-size: 1.05rem;
-            color: var(--primary);
+        .process-step h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 6. Contact Form & 7. Contacts */
+        .contact-section {
+            background-color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-form-container {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
             font-weight: 600;
-            line-height: 1.5;
+            color: var(--text-dark);
         }
 
-        .contact-form {
-            background: var(--bg-white);
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .contact-form h3 {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .contact-form input, .contact-form textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: 16px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-family: var(--font-sans);
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            background: var(--bg-base);
-            transition: border-color 0.3s;
+            transition: var(--transition);
         }
 
-        .contact-form input:focus, .contact-form textarea:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
-            background: var(--bg-white);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 90, 140, 0.1);
         }
 
-        .contact-form textarea {
+        .form-group textarea {
             height: 150px;
             resize: vertical;
         }
 
-        .btn-submit {
-            background: var(--primary);
-            color: var(--bg-white);
-            padding: 16px 0;
-            width: 100%;
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
             border: none;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.3s;
-            font-size: 0.95rem;
+            width: 100%;
+            transition: var(--transition);
         }
 
-        .btn-submit:hover {
-            background: var(--primary-light);
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
         }
 
-        /* 7. FOOTER & LEGAL */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(230, 126, 34, 0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details a {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .info-details a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
         footer {
-            background: #0B1120;
-            color: #94A3B8;
-            padding: 80px 10% 40px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 50px;
-        }
-
-        .footer-col h4 {
-            color: var(--bg-white);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul a {
-            color: #94A3B8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .footer-col ul a:hover {
-            color: var(--accent);
-        }
-
-        .footer-bottom {
+            background-color: #1a252f;
+            color: #bdc3c7;
             text-align: center;
-            font-size: 0.85rem;
+            padding: 30px 0;
+            border-top: 4px solid var(--accent-color);
         }
 
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .nav-links { display: none; }
-            .about-grid, .app-promo, .contact-container { grid-template-columns: 1fr; }
-            header h1 { font-size: 2.2rem; }
-            .app-promo { padding: 80px 5%; }
-            .app-visual { display: none; }
+            .hero h1 { font-size: 3rem; }
+            .process-wrapper { flex-direction: column; gap: 40px; }
+            .process-wrapper::before { display: none; }
+            .process-step { width: 100%; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; /* Can add hamburger menu logic here */ }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-padding { padding: 60px 0; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">DIDROV <span>97 EOOD</span></div>
-        <div class="nav-links">
-            <a href="#about">Corporate</a>
-            <a href="#retail">Retail Operations</a>
-            <a href="#mobile-app">E-Commerce App</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
     <header>
-        <div class="hero-content">
-            <div class="hero-badge">Premium Lifestyle & Sporting Retailers</div>
-            <h1>Empowering Active Lifestyles in Bulgaria.</h1>
-            <p>A premier retail enterprise in Pazardzhik, providing top-tier sporting goods, musical instruments, and hobby essentials, fully integrated with modern e-commerce mobile solutions.</p>
-            <a href="#mobile-app" class="btn-primary">Explore Digital Shopping</a>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                DIDROV <span>97</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">The Story</a>
+                <a href="#services">Solutions</a>
+                <a href="#advantages">Why Us</a>
+                <a href="#process">Process</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <section id="about" class="section bg-white">
-        <div class="section-header">
-            <h2>Corporate Overview</h2>
-            <div class="line"></div>
-        </div>
-        <div class="about-grid">
-            <div class="about-text">
-                <p><strong>DIDROV 97 EOOD</strong> is a highly dynamic retail enterprise headquartered in Pazardzhik, Bulgaria. Under the leadership of Key Principal Yordan Didrov, we have established a strong presence in the specialized consumer goods market, curating products that inspire creativity and active living.</p>
-                <p>Our operations span across the Retail Trade sector. We specialize as Miscellaneous Retailers, focusing meticulously on Sporting Goods, Hobby supplies, Musical Instruments, and Books. We believe in providing physical retail excellence backed by robust digital accessibility.</p>
-            </div>
-            <div class="highlight-box">
-                <h3 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; font-family: var(--font-display); font-weight: 800;">Omnichannel Retail Strategy</h3>
-                <p style="color: var(--text-muted); line-height: 1.6;">To meet the demands of modern consumers, DIDROV 97 EOOD is actively bridging the gap between our brick-and-mortar storefronts and digital commerce. Our goal is to provide a seamless, interconnected shopping experience through our dedicated mobile platforms.</p>
-            </div>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover Your Passion with DIDROV 97</h1>
+            <p>Your trusted Bulgarian partner for premium sporting goods, musical instruments, and hobby essentials tailored to elevate your everyday life.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
         </div>
     </section>
 
-    <section id="retail" class="section">
-        <div class="section-header">
-            <h2>Our Retail Categories</h2>
-            <div class="line"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🎾</div>
-                <h3>Sporting Goods</h3>
-                <p>High-performance athletic equipment, specialized gear, and sportswear for professionals and enthusiasts alike.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎸</div>
-                <h3>Musical Instruments</h3>
-                <p>A curated selection of string, wind, and percussion instruments, along with professional audio accessories for musicians.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📚</div>
-                <h3>Hobby & Books</h3>
-                <p>A vast array of hobbyist supplies, educational materials, and literature catering to creative and intellectual pursuits.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="mobile-app" class="app-promo">
-        <div class="app-content">
-            <h2>DIDROV Mobile Hub</h2>
-            <p>To provide our customers with a seamless, 24/7 shopping experience, <strong>DIDROV 97 EOOD has developed a proprietary e-commerce application published on the Google Play Store.</strong></p>
-            <p>The <em>DIDROV Mobile Hub</em> transforms how you shop for sporting goods and musical instruments. It integrates our entire catalog into your smartphone, offering secure mobile checkout, exclusive digital loyalty rewards, and AR (Augmented Reality) previews of selected items.</p>
-            
-            <ul class="feature-list">
-                <li>Full e-commerce functionality with secure mobile checkout.</li>
-                <li>Digital loyalty card: earn points on every in-app or in-store purchase.</li>
-                <li>Push notifications for exclusive sales, new books, and instrument arrivals.</li>
-                <li>AR viewer to visualize sporting equipment sizes before buying.</li>
-            </ul>
-            
-            <a href="#contact" class="btn-outline">Google Play Developer Support</a>
-        </div>
-        <div class="app-visual">
-            <div style="text-align: left; width: 100%;">
-                <p style="color: var(--accent); font-family: monospace; font-size: 0.9rem; margin-bottom: 10px;">> INIT DIDROV_ECOMMERCE_API</p>
-                <p style="color: rgba(255,255,255,0.7); font-family: monospace; font-size: 0.85rem; line-height: 1.8;">
-                    SYNCING INVENTORY DATABASE... [OK]<br>
-                    LOADING USER LOYALTY PROFILE... [OK]<br>
-                    INITIALIZING SECURE CHECKOUT... [OK]<br>
-                    <br>
-                    <span style="color: #4ADE80;">MOBILE STOREFRONT ONLINE</span>
+    <section class="section-padding about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">The Story Behind Our Retail Excellence</h2>
+            <p class="section-subtitle">A legacy built on quality and dedication.</p>
+            <div class="about-content">
+                <p>
+                    Founded in Pazardzhik, Bulgaria, DIDROV 97 EOOD has steadily grown into a leading name within the versatile retail sector. Under the visionary leadership of Yordan Didrov, our core mission is to bring exceptional products closer to enthusiasts, hobbyists, and professionals alike. We specialize in curating an extensive, high-quality catalog that ranges from top-tier sporting equipment to fine musical instruments and captivating hobby supplies. Over the years, our unwavering dedication to product authenticity, customer satisfaction, and active community engagement has truly set us apart in a competitive retail market. We fundamentally believe that everyone deserves access to the tools that fuel their passions, and our team works tirelessly every day to source only the best items globally for you.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section bg-white">
-        <div class="section-header">
-            <h2>Corporate Verification & Contact</h2>
-            <div class="line"></div>
-        </div>
-        
-        <div class="contact-container">
-            <div class="corp-details">
-                <h3>Entity Registration</h3>
+    <section class="section-padding" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Retail Solutions</h2>
+            <p class="section-subtitle">Tailored offerings to meet the diverse needs of athletes, musicians, and hobbyists.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Specialized Equipment Sourcing</h3>
+                    <p>We go beyond standard inventory by tracking down rare and specialized sporting or hobby equipment designed specifically for our clients. Whether you are a professional athlete or a dedicated collector, our sourcing team ensures you get exactly what you need. We actively partner with globally renowned brands to guarantee total authenticity and exceptional product quality.</p>
+                </div>
                 
-                <div class="detail-row">
-                    <div class="detail-label">Legal Entity Name</div>
-                    <div class="detail-value">DIDROV 97 EOOD</div>
-                </div>
-
-                <div class="detail-row">
-                    <div class="detail-label">Key Principal</div>
-                    <div class="detail-value">YORDAN DIDROV</div>
-                </div>
-
-                <div class="detail-row">
-                    <div class="detail-label">Industry Classifications</div>
-                    <div class="detail-value" style="font-size: 0.95rem;">
-                        • Sporting Goods, Hobby, Musical Instrument, Book, and Miscellaneous Retailers<br>
-                        • Other Miscellaneous Retailers<br>
-                        • Retail Trade
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
+                    <h3>Personalized Consultation</h3>
+                    <p>Navigating the complex world of musical instruments and professional hobby gear can often be overwhelming for beginners. Our highly expert staff provides one-on-one consultations to help you choose the perfect product perfectly matching your current skill level and goals. We take immense pride in sharing our deep industry knowledge to make your shopping experience entirely seamless.</p>
                 </div>
 
-                <div class="detail-row">
-                    <div class="detail-label">Registered Headquarters</div>
-                    <div class="detail-value">
-                        2 Trapezitsa str./blvd. Pazardzhik<br>
-                        Pazardzhik, 4400<br>
-                        Bulgaria
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                     </div>
-                </div>
-
-                <div class="detail-row">
-                    <div class="detail-label">Official Communication</div>
-                    <div class="detail-value" style="color: var(--primary);">info@didrov.cloud</div>
+                    <h3>Bulk Retail & Wholesale</h3>
+                    <p>For sports clubs, educational schools, and local community organizations, we offer fully tailored bulk purchasing options accompanied by highly favorable terms. Our robust and efficient supply chain ensures timely delivery alongside consistent availability of high-demand items. Let us handle all the complex logistics while you focus entirely on empowering and growing your community.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="contact-form">
-                <h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--primary);">Direct Inquiry</h3>
-                <form onsubmit="event.preventDefault();">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="text" placeholder="Subject (e.g., App Support, Product Inquiry)">
-                    <textarea placeholder="How can our retail or app support team assist you?" required></textarea>
-                    <button type="submit" class="btn-submit">Send Request</button>
-                </form>
+    <section class="section-padding advantages-section" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Why We Stand Out in the Retail Landscape</h2>
+            <p class="section-subtitle">Discover the key advantages of making DIDROV 97 EOOD your primary retail partner.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h3>Uncompromising Quality Standards</h3>
+                    <p>Every single product on our shelves, whether it is a high-performance tennis racket or an elegant acoustic guitar, undergoes incredibly strict quality control before it reaches you. We simply refuse to compromise on durability, safety, and overall performance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    </div>
+                    <h3>Deep Industry Expertise</h3>
+                    <p>Our dedicated team isn't just made up of standard salespeople; we are active enthusiasts and lifelong practitioners in sports, arts, and varied hobbies. This genuine passion translates directly into reliable, battle-tested advice for every customer we serve.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </div>
+                    <h3>Customer-Centric Approach</h3>
+                    <p>We believe in building long-lasting relationships rather than just quickly closing one-time sales. Our highly flexible return policies, dedicated personal support, and community-first mindset ensure that you always feel valued and heard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">How We Deliver Excellence</h2>
+            <p class="section-subtitle">Our streamlined three-step process ensures you get exactly what you desire with zero hassle.</p>
+            
+            <div class="process-wrapper">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery & Consultation</h3>
+                    <p>We start by actively listening and understanding your specific lifestyle needs, whether you are outfitting a commercial gym or finding the perfect instrument for a beginner.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Sourcing & Curation</h3>
+                    <p>Our expert procurement specialists select the most suitable, premium products from our vast and highly vetted network of trusted international and local suppliers.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Fulfillment & Support</h3>
+                    <p>Your order is securely packaged, swiftly delivered right to your door, and accompanied by our dedicated after-sales support to ensure absolute, ongoing satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Ignite Your Passion</h2>
+            <p class="section-subtitle">Ready to find exactly what you've been looking for? Drop us a message and our team will get back to you with the perfect solution.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="E.g., John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="E.g., john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Inquiry</label>
+                            <textarea id="message" name="message" placeholder="How can we help you today?" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Request</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Reach Out to Us</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="info-details">
+                            <h4>Headquarters</h4>
+                            <p>2 Trapezitsa str./blvd.<br>Pazardzhik, 4400<br>Bulgaria</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="info-details">
+                            <h4>Corporate Email</h4>
+                            <a href="mailto:info@didrov.cloud">info@didrov.cloud</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <div class="info-details">
+                            <h4>Company Details</h4>
+                            <p>DIDROV 97 EOOD<br>Key Principal: YORDAN DIDROV</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="logo" style="color: var(--bg-white); margin-bottom: 20px; font-size: 1.2rem;">DIDROV <span style="color: var(--accent);">97 EOOD</span></div>
-                <p>Bridging physical retail excellence with modern e-commerce solutions in Pazardzhik, Bulgaria.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Mobile App Support</h4>
-                <ul>
-                    <li><a href="#">Google Play Publisher Profile</a></li>
-                    <li><a href="#">Report an App Bug / Payment Issue</a></li>
-                    <li><a href="#"><strong>Request Account & Data Deletion</strong></a></li>
-                    <li><a href="#">App User Guide & Loyalty Terms</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Legal & Compliance</h4>
-                <ul>
-                    <li><a href="#">Terms of Service (E-commerce)</a></li>
-                    <li><a href="#">Privacy Policy (GDPR Compliant)</a></li>
-                    <li><a href="#">Return & Refund Policy</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 DIDROV 97 EOOD. Registered in Bulgaria. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 DIDROV 97 EOOD. All rights reserved. Premium Retail Partner in Bulgaria.</p>
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjusting for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
